@@ -33,10 +33,7 @@ function ENT:PhysicsCollide(data, phys)
         
         self:SetPos(data.HitPos)
         self:SetAngles(ang)
-        
-        if IsValid(data.HitEntity) and not data.HitEntity:IsWorld() then
-            self:SetParent(data.HitEntity)
-        end
+        constraint.Weld(self, data.HitEntity, 0, 0, 0, true, false)
         
         self:EmitSound("weapons/hegrenade/he_bounce-1.wav")
     end

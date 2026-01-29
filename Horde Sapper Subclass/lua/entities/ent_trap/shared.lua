@@ -1,0 +1,1 @@
+ENT.Type = 'anim' ENT.PrintName = "Trap" ENT.Author = "Me" ENT.Contact = "76561198194142769" ENT.Category = "Trap" ENT.Purpose = "" ENT.Instructions = "N/A" ENT.Spawnable = true ENT.AdminSpawnable = true

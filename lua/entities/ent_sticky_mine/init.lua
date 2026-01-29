@@ -91,9 +91,13 @@ function ENT:Explode()
     self.Exploded = true
     
     local pos = self:GetPos()
-    local owner = self:GetOwner()
-    if not IsValid(owner) then owner = self end
     
+    -- ИЗМЕНЕННЫЙ БЛОК НАЧАЛО
+    local owner = self.Horde_Owner -- Сначала ищем Horde владельца
+    if not IsValid(owner) then owner = self:GetOwner() end -- Если нет, ищем обычного
+    if not IsValid(owner) then owner = self end -- Если вообще никого, то сама мина
+    -- ИЗМЕНЕННЫЙ БЛОК КОНЕЦ
+
     -- Эффект
     local effectdata = EffectData()
     effectdata:SetOrigin(pos)

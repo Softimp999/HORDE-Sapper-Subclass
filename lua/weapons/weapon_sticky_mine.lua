@@ -33,21 +33,57 @@ function SWEP:Initialize()
     self:SetHoldType("grenade")
 end
 
-function SWEP:Deploy()
-    self:SendWeaponAnim(ACT_VM_DRAW)
-    
-    --[[ СКРЫВАЕМ ГРАНАТУ ПРИ ДОСТАВАНИИ (Сжимаем кость) ]]--
-    if CLIENT then
-        local vm = self:GetOwner():GetViewModel()
+function SWEP:Think()
+    -- Если у игрока нет патронов, скрываем модель рук
+    local ply = self:GetOwner()
+    if not IsValid(ply) then return end
+
+    local vm = ply:GetViewModel()
+    if not IsValid(vm) then return end
+
+    local ammo = ply:GetAmmoCount(self.Primary.Ammo)
+
+    if ammo <= 0 then
+        -- Патронов нет: скрываем руки, если они еще не скрыты
+        if not vm:GetNoDraw() then
+            vm:SetNoDraw(true)
+        end
+    else
+        -- Патроны есть (например, отрегенились): показываем руки обратно
+        if vm:GetNoDraw() then
+            vm:SetNoDraw(false)
+            self:SendWeaponAnim(ACT_VM_DRAW) -- Проигрываем анимацию "доставания"
+        end
+    end
+end
+
+-- Обязательно возвращаем видимость рукам, если игрок переключил оружие
+function SWEP:Holster()
+    local ply = self:GetOwner()
+    if IsValid(ply) then
+        local vm = ply:GetViewModel()
         if IsValid(vm) then
-            -- Находим кость самой гранаты
-            local bone = vm:LookupBone("ValveBiped.Grenade_Body")
-            if bone then
-                vm:ManipulateBoneScale(bone, Vector(0, 0, 0)) -- Сжимаем в ноль
+            vm:SetNoDraw(false)
+        end
+    end
+    return true
+end
+
+-- На случай, если игрок выбрал оружие, а патронов уже 0 (редкий кейс, но всё же)
+function SWEP:Deploy()
+    local ply = self:GetOwner()
+    if IsValid(ply) then
+        local vm = ply:GetViewModel()
+        if IsValid(vm) then
+            local ammo = ply:GetAmmoCount(self.Primary.Ammo)
+            if ammo <= 0 then
+                vm:SetNoDraw(true)
+            else
+                vm:SetNoDraw(false)
+                self:SendWeaponAnim(ACT_VM_DRAW)
             end
         end
     end
-    
     return true
 end
 
@@ -110,6 +146,7 @@ function SWEP:ThrowMine()
             ent:SetPos(src)
             ent:SetAngles(ply:GetAngles())
             ent:SetOwner(ply)
+            ent.Horde_Owner = ply -- Horde Owning Hook
             ent:Spawn()
             ent:Activate()
             

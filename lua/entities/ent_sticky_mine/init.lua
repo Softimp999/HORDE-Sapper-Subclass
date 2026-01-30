@@ -13,26 +13,30 @@ ENT.Damage = 350
 ENT.DamageRadius = 300
 ENT.ArmDelay = 1
 
--- Добавляем логику прилипания
 function ENT:PhysicsCollide(data, phys)
     if self.Stuck then return end
     
-    if data.HitEntity:IsWorld() or IsValid(data.HitEntity) then
+    local ent = data.HitEntity
+    
+    -- ПРОВЕРКА: Если мы попали в Игрока, NPC или NextBot — НЕ ПРИЛИПАЕМ
+    if IsValid(ent) and (ent:IsPlayer() or ent:IsNPC() or ent:IsNextBot()) then
+        return
+    end
+    
+    -- Если попали в мир или проп — прилипаем
+    if ent:IsWorld() or IsValid(ent) then
         self.Stuck = true
         
-        -- Звук удара
         self:EmitSound("weapons/hegrenade/he_bounce-1.wav")
         
         local ang = data.HitNormal:Angle()
-        ang:RotateAroundAxis(ang:Right(), 180)
+        ang:RotateAroundAxis(ang:Right(), -180)
         
         self:SetPos(data.HitPos)
         self:SetAngles(ang)
         
-        -- Привариваем
-        constraint.Weld(self, data.HitEntity, 0, 0, 0, true, false)
+        constraint.Weld(self, ent, 0, 0, 0, true, false)
         
-        -- Замораживаем физику чтобы не дергалась
         local p = self:GetPhysicsObject()
         if IsValid(p) then p:EnableMotion(false) end
     end

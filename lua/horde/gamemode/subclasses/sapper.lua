@@ -7,8 +7,8 @@ Explosive munition expert class.
 Uses only mine and trap related weapons.]] -- Required
 SUBCLASS.BasePerk = "sapper_base"
 SUBCLASS.Perks = {
-    [1] = {title = "Stealth", choices = {"sapper_beast_breath", "assault_charge"}},
-    [2] = {title = "Weaponory", choices = {"demolition_direct_hit", "demolition_seismic_wave"}},
-    [3] = {title = "Approach", choices = {"demolition_fragmentation", "demolition_knockout"}},
-    [4] = {title = "Annihilation", choices = {"demolition_chain_reaction", "demolition_pressurized_warhead"}},
+    [1] = {title = "Symbiosis", choices = {"sapper_hot_blood", "sapper_loyality"}},
+    [2] = {title = "Potency", choices = {"demolition_fragmentation", "sapper_evolution"}},
+    [3] = {title = "Trigger", choices = {"sapper_detonator", "sapper_kinship"}},
+    [4] = {title = "Metamorphosis", choices = {"sapper_pyromaniac", "sapper_mutation"}},
 } -- Required

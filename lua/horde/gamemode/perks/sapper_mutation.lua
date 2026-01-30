@@ -1,5 +1,5 @@
 PERK.PrintName = "Mutation"
-PERK.Description = [[Your minions move and attack {1} faster.]]
+PERK.Description = [[Your houndeyes move and attack {1} faster.]]
 PERK.Icon = "materials/perks/sapper/mutation.png"
 PERK.Params = {
     [1] = {value = 0.15, percent = true}

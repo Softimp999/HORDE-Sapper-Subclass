@@ -1,5 +1,5 @@
 PERK.PrintName = "Evolution"
-PERK.Description = [[Your minions deal {1} more damage.]]
+PERK.Description = [[Your houndeyes deal {1} more damage.]]
 PERK.Icon = "materials/perks/sapper/evolution.png"
 PERK.Params = {
     [1] = {value = 0.2, percent = true}

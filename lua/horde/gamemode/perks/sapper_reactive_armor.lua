@@ -1,10 +1,11 @@
-PERK.PrintName = "Pyromaniac"
-PERK.Description = [[Increases healing from explosion by {1}.
-Increases your speed by {2}.]]
-PERK.Icon = "materials/perks/sapper/pyromaniac.png"
+PERK.PrintName = "Reactive Armor"
+PERK.Description = [[{1} increased Blast damage.
+If you take non-blast damage while wearing armor, 
+it detonates, dealing damage equal to your armor value.]]
+PERK.Icon = "materials/perks/sapper/reactive_armor.png"
 PERK.Params = {
-    [1] = {value = 0.15, percent = true},
-    [2] = {value = 0.1, percent = true}
+     [1] = {value = 0.15, percent = true},
+     [2] = {value = 0.75, percent = true}
 }
 
 PERK.Hooks = {}

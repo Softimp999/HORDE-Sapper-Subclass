@@ -1,7 +1,9 @@
 PERK.PrintName = "Kinship"
-PERK.Description = [[Unlock ability to summon 3 minions at once.]]
+PERK.Description = [[Unlock ability to summon 3 houndeyes at once.
+Each Houndeye's health increases to {1}.]]
 PERK.Icon = "materials/perks/sapper/kinship.png"
 PERK.Params = {
+    [1] = {value = 0.20, percent = true}
 }
 
 PERK.Hooks = {}

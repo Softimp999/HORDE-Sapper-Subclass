@@ -1,6 +1,6 @@
 PERK.PrintName = "Loyality"
 PERK.Description = [[
-Your minions begin to chase your traps.]]
+Your houndeyes begin to chase your traps.]]
 PERK.Icon = "materials/perks/sapper/loyality.png"
 PERK.Params = {
 }

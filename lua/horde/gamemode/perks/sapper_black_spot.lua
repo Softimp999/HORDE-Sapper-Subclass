@@ -1,10 +1,10 @@
-PERK.PrintName = "Pyromaniac"
-PERK.Description = [[Increases healing from explosion by {1}.
-Increases your speed by {2}.]]
-PERK.Icon = "materials/perks/sapper/pyromaniac.png"
+PERK.PrintName = "Black Spot"
+PERK.Description = [[Mines have a {1} chance to leave a mark of death on enemies.
+Marked enemies will take {2} additional damage based on their maximum health.]]
+PERK.Icon = "materials/perks/sapper/black_spot.png"
 PERK.Params = {
-    [1] = {value = 0.15, percent = true},
-    [2] = {value = 0.1, percent = true}
+     [1] = {value = 0.25, percent = true},
+     [2] = {value = 0.75, percent = true}
 }
 
 PERK.Hooks = {}

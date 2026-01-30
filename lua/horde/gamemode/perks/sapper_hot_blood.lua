@@ -1,6 +1,5 @@
 PERK.PrintName = "Hot Blood"
-PERK.Description = [[
-Your own explosions heal you for {1} of your maximum health.]]
+PERK.Description = [[Your own explosions heal you for {1} of your maximum health.]]
 
 PERK.Icon = "materials/perks/sapper/hot_blood.png"
 PERK.Params = {
@@ -8,11 +7,3 @@ PERK.Params = {
 }
 
 PERK.Hooks = {}
---PERK.Hooks.Horde_OnSetPerk = function(ply, perk)
-   
-
--- PERK.Hooks.Horde_OnUnsetPerk = function(ply, perk)
-   
-
--- PERK.Hooks.Horde_OnPlayerDebuffApply = function (ply, debuff, bonus)
-

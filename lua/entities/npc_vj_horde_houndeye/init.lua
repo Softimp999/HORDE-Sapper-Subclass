@@ -6,7 +6,7 @@ include('shared.lua')
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 -----------------------------------------------*/
 ENT.Model = {"models/hl2beta/houndeye.mdl"} -- The game will pick a random model from the table when the SNPC is spawned | Add as many as you want
-ENT.StartHealth = 512
+ENT.StartHealth = 400
 ENT.SightDistance = 8000
 ENT.HullType = HULL_TINY
 ENT.PlayerFriendly = true
@@ -15,15 +15,16 @@ ENT.VJ_NPC_Class = {"CLASS_PLAYER_ALLY", "CLASS_COMBINE"} -- NPCs with the same 
 ENT.BloodColor = "Yellow" -- The blood type, this will determine what it should use (decal, particle, etc.)
 ENT.Immune_Sonic = true -- Immune to sonic damage
 ENT.Immune_Electricity = true
-ENT.Immune_AcidPoisonRadiation = false -- Immune to Acid, Poison and Radiation
+ENT.Immune_AcidPoisonRadiation = true -- Immune to Acid, Poison and Radiation
 ENT.Immune_Blast = true
+ENT.Horde_Immune_Status_All = true
 
 ENT.HasMeleeAttack = true -- Should the SNPC have a melee attack?
 ENT.AnimTbl_MeleeAttack = {ACT_RANGE_ATTACK1} -- Melee Attack Animations
 ENT.MeleeAttackDistance = 194 -- How close does it have to be until it attacks?
 ENT.MeleeAttackDamageDistance = 300 -- How far does the damage go?
 ENT.TimeUntilMeleeAttackDamage = 2.15 -- This counted in seconds | This calculates the time until it hits something
-ENT.MeleeAttackDamage = 50
+ENT.MeleeAttackDamage = 75
 ENT.MeleeAttackDamageType = DMG_SONIC -- Type of Damage
 ENT.MeleeAttackDSPSoundType = 34 -- What type of DSP effect? | Search online for the types
 ENT.MeleeAttackDSPSoundUseDamage = false -- Should it only do the DSP effect if gets damaged x or greater amount
@@ -31,7 +32,7 @@ ENT.DisableDefaultMeleeAttackDamageCode = true -- Disables the default melee att
 
 ENT.HasMeleeAttackKnockBack = true -- If true, it will cause a knockback to its enemy
 ENT.MeleeAttackKnockBack_Forward1 = 512 -- How far it will push you forward | First in math.random
-ENT.MeleeAttackKnockBack_Forward2 = 512 -- How far it will push you forward | Second in math.random
+ENT.MeleeAttackKnockBack_Forward2 = 768 -- How far it will push you forward | Second in math.random
 ENT.MeleeAttackKnockBack_Up1 = 20 -- How far it will push you up | First in math.random
 ENT.MeleeAttackKnockBack_Up2 = 20 -- How far it will push you up | Second in math.random
 ENT.MeleeAttackKnockBack_Right1 = 0 -- How far it will push you right | First in math.random
@@ -157,3 +158,4 @@ end
 	without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 --------------------------------------*/---------
 VJ.AddNPC("Houndeye","npc_vj_horde_houndeye", "HORDE: Sapper")
+ENT.Horde_TurretMinion = true
